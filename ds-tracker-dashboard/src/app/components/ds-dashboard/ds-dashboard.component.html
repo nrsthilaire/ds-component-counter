@@ -1,0 +1,26 @@
+<div class="p-6">
+  <h1 class="text-2xl font-bold mb-4">Design System Adoption Dashboard</h1>
+
+  <div *ngIf="loading">Loading usage data...</div>
+
+  <table *ngIf="!loading" class="min-w-full border-collapse border border-gray-300">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="p-2 text-left">Component</th>
+        <th class="p-2 text-right">Total Usage</th>
+        <th class="p-2 text-right">Unique Pages</th>
+        <th class="p-2 text-right">Unique Apps</th>
+        <th class="p-2 text-left">Last Used</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of usageData" class="border-b">
+        <td class="p-2">{{ row.component }}</td>
+        <td class="p-2 text-right">{{ row.total_usage | number }}</td>
+        <td class="p-2 text-right">{{ row.unique_routes | number }}</td>
+        <td class="p-2 text-right">{{ row.unique_apps | number }}</td>
+        <td class="p-2">{{ row.last_used | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
